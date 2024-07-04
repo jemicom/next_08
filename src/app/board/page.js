@@ -16,7 +16,7 @@ const Board = () => {
   const router = useRouter(); 
 
   useEffect(()=>{
-    fetch('http://localhost:3000/api/board')
+    fetch('https://next-08-lsmtn2f64-jemicoms-projects.vercel.app/api/board')
         .then(res=>res.json())
         .then(res=>{
             // console.log('res', res); 
@@ -59,9 +59,9 @@ const Board = () => {
   return (
   
     <div>
-        <a href="/board?query=css">css</a>
-        <a href="/board?query=java">java</a>
-        <a href="/board">reset</a>  
+        <a href="/board?query=css"> css </a>
+        <a href="/board?query=java"> java </a>
+        <a href="/board"> reset </a>  
         {/* <p onClick={()=>handleClick('first')}>router push first</p>  
         <p onClick={()=>handleClick('second')}>router push second</p>   
         <p onClick={()=>router.push("/board?query=third")}>router push third</p>     */}
@@ -79,7 +79,7 @@ const Board = () => {
           {filteredPosts.map(item => (
             <li key={item.id}>
               
-              <h2><a href={`/board/${item.id}`}>{item.title} </a></h2>
+              <h2><a href={`/board/${item.id}`}> {item.title} </a></h2>
               <p>{item.body}</p>
             </li>
           ))}
