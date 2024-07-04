@@ -24,20 +24,30 @@ import { board } from "../data"
 // localhost:3000/api/api/300  : redirect
 // localhost:3000/api/api/1?query=first
 export async function GET( request , { params } ) {
-  
-  console.log( params ) 
+    try {
+          console.log( params ) 
 
-  // 호출한 id가 전체 length 보다 크면  redirect
+          // 호출한 id가 전체 length 보다 크면  redirect
 
-  // 리다렉트가 되는 것 같음
-  // if (parseInt(params.id) > board.length) {
-  //   redirect("/api/board");
-  //   // 같은 backend로 route
-  // }
-  const findId = board.find(
-    (item) => item.id ===  params.id 
-  );
-  return Response.json(findId);
+          // 리다렉트가 되는 것 같음
+          // if (parseInt(params.id) > board.length) {
+          //   redirect("/api/board");
+          //   // 같은 backend로 route
+          // }
+          const findId = board.find(
+            (item) => item.id ===  params.id 
+          );
+          return Response.json(findId);
+    }catch(err){
+        
+          return new Response(null, {
+            status: 302,
+            headers: {
+              // Location: '/board',
+              Location: 'https://next-08.vercel.app/board/',
+            },
+          });
+    }
 }
 
 import fs from 'fs';
