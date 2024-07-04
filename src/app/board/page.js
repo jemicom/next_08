@@ -42,7 +42,7 @@ const Board = () => {
   };
   useEffect(()=>{
      
-    fetch(`https://next-08.vercel.app/api/board?query=${query}`)
+    fetch(`https://next-08-lsmtn2f64-jemicoms-projects.vercel.app/api/board?query=${query}`)
         .then(res=>res.json())
         .then(res=>{
             console.log('res', res); 
