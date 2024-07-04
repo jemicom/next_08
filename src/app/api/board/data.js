@@ -23,22 +23,7 @@ export const board = [
       "id": "6",
       "title": "kim  ",
       "body": "kim..."
-   },
-   {
-      "id": "30",
-      "title": "30",
-      "body": "30"
-   },
-   {
-      "id": "30",
-      "title": "sdfas",
-      "body": "fsdfa"
-   },
-   {
-      "id": "30",
-      "title": "test",
-      "body": "test"
-   }
+   } 
 ]
 
  

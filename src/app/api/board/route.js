@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import fs from 'fs'
 import path from 'path'
-
-// import { board } from './data'
+const filePath = path.join(process.cwd(), 'src/app/api/board', 'data.js');
+import { board } from './data'
 // 새로운 board 를 읽어오지 않으므로 기존 데이터를 그대로 출력함 
 
 // let board = [];
@@ -16,42 +16,34 @@ import path from 'path'
 
 // 파라미터 사용법이 React와 같음 
 // 1
-// export async function GET() {
-//   return Response.json(board);
-// }
-
-
-//localhost:3002/api/board?query=second
-export  async function GET(request, { params } ) {
-
-  Response.setHeader('Access-Control-Allow-Credentials', 'true');
-  Response.setHeader('Access-Control-Allow-Origin', '*'); // 모든 도메인에서 접근 가능
-  Response.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  Response.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-
-  if (request.method === 'OPTIONS') {
-    Response.status(200).end();
-    return;
-  }
-  // params를 사용할 수 없을 때 
-  // params : undefind 
-  // 라우트를 자동 인식하므로 파라미터도 자동 인식됨 
-  const filePath = path.join(process.cwd(), 'src/app/api/board', 'data.js');
-  // 파일에 쓰기
-  const board =  fs.readFileSync( filePath );
-
-  const searchParams = request.nextUrl.searchParams;
-  //
-  console.log( params,   searchParams )
-  const query = searchParams.get("query");
-  const filtered = query
-    ? board.filter((item) => item.title.includes(query))
-    : board;
-
-    console.log( filtered )
-  return Response.json(filtered );
-  // return Response.json(searchParams);
+export async function GET() {
+  return Response.json(board);
 }
+
+
+// //localhost:3002/api/board?query=second
+// export  async function GET(request, { params } ) {
+
+//   Response.setHeader('Access-Control-Allow-Credentials', 'true');
+//   Response.setHeader('Access-Control-Allow-Origin', '*'); // 모든 도메인에서 접근 가능
+//   Response.setHeader('Access-Control-Allow-Methods', 'GET,PATCH,DELETE,POST,PUT');
+//   Response.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+  
+//   // 파일에 쓰기
+//   const board =  fs.readFileSync( filePath );
+
+//   const searchParams = request.nextUrl.searchParams;
+//   //
+//   console.log( params,   searchParams )
+//   const query = searchParams.get("query");
+//   const filtered = query
+//     ? board.filter((item) => item.title.includes(query))
+//     : board;
+
+//     console.log( filtered )
+//   return Response.json(filtered );
+//   // return Response.json(searchParams);
+// }
 
 
 
@@ -64,10 +56,13 @@ export async function POST(request) {
      const formData = await request.formData();
     // console.log(formData )
     // const { title, body } = Object.fromEntries(formData);
+    
+    // 파일에 읽기
+   
 
     const newPost = {
-      // id : `${ board[board.length].id + 1}`, 
-      id : "30", 
+      id : `${ board[board.length].id + 1}`, 
+      // id : "30", 
       title : formData.get('title'),
       body : formData.get('body'),
     }
