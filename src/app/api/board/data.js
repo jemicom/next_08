@@ -18,11 +18,6 @@ export const board = [
       "id": "5",
       "title": "css",
       "body": "css..."
-   },
-   {
-      "id": "6",
-      "title": "kim  ",
-      "body": "kim..."
    } 
 ]
 
