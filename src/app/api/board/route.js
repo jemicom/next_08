@@ -1,4 +1,7 @@
 import { redirect } from "next/navigation";
+import fs from 'fs'
+import path from 'path'
+
 // import { board } from './data'
 // 새로운 board 를 읽어오지 않으므로 기존 데이터를 그대로 출력함 
 
@@ -19,13 +22,13 @@ import { redirect } from "next/navigation";
 
 
 //localhost:3002/api/board?query=second
-export async function GET(request, { params } ) {
+export  async function GET(request, { params } ) {
   // params를 사용할 수 없을 때 
   // params : undefind 
   // 라우트를 자동 인식하므로 파라미터도 자동 인식됨 
   const filePath = path.join(process.cwd(), 'src/app/api/board', 'data.js');
   // 파일에 쓰기
-  const board = fs.readFileSync( filePath , 'utf8');
+  const board =  fs.readFileSync( filePath );
 
   const searchParams = request.nextUrl.searchParams;
   //
@@ -41,8 +44,7 @@ export async function GET(request, { params } ) {
 }
 
 
-import fs from 'fs'
-import path from 'path'
+
 //  post : localhost:3000/api/board
 // 그러나 get test하면 목록이 늘어나는 것을 확인할 수 있음 
  
