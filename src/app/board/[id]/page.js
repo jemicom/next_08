@@ -9,7 +9,7 @@ import DeleteBtn from "../components/DeleteBtn";
 // localhost:3002/app/board/1
 // localhost:3002/app/board/2
 const fetchIdHandle = async (id) => { 
-  const response = await fetch(`https://next-07-inky.vercel.app/api/board/${id}`);
+  const response = await fetch(`https://next-08.vercel.app/api/board/${id}`);
   const data = await response.json();
   return data;
 };
