@@ -9,7 +9,7 @@ const Editform =  ({params}) => {
   const [board, setBoard] = useState({});
    
   const fetchIdHandle = async (id) => { 
-    const response = await fetch(`https://next-07-inky.vercel.app/api/board/${id}`);
+    const response = await fetch(`https://next-08.vercel.app/api/board/${id}`);
     const data = await response.json();
     setBoard( data )
   };
