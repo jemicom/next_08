@@ -23,6 +23,16 @@ import path from 'path'
 
 //localhost:3002/api/board?query=second
 export  async function GET(request, { params } ) {
+
+  Response.setHeader('Access-Control-Allow-Credentials', 'true');
+  Response.setHeader('Access-Control-Allow-Origin', '*'); // 모든 도메인에서 접근 가능
+  Response.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  Response.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+
+  if (request.method === 'OPTIONS') {
+    Response.status(200).end();
+    return;
+  }
   // params를 사용할 수 없을 때 
   // params : undefind 
   // 라우트를 자동 인식하므로 파라미터도 자동 인식됨 
