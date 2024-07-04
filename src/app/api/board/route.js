@@ -31,15 +31,15 @@ export  async function GET(request, { params } ) {
   
   // 파일에 읽기
   const res =  fs.readFileSync( filePath );
-  const data = await res.parse();
+  // const data = await res.parse();
 
   const searchParams = request.nextUrl.searchParams;
   //
   // console.log( params,   searchParams )
   const query = searchParams.get("query");
   const filtered = query
-    ? data.filter((item) => item.title.includes(query))
-    : data;
+    ? res.filter((item) => item.title.includes(query))
+    : res;
 
     console.log( filtered )
   return Response.json(filtered );
