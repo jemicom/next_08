@@ -16,7 +16,7 @@ const Board = () => {
   const router = useRouter(); 
 
   useEffect(()=>{
-    fetch('https://next-08-8maiduwyc-jemicoms-projects.vercel.app/api/board')
+    fetch('https://next-08.vercel.app/api/board')
         .then(res=>res.json())
         .then(res=>{
             // console.log('res', res); 
@@ -43,7 +43,7 @@ const Board = () => {
 
   useEffect(()=>{
      
-    fetch(`https://next-08-8maiduwyc-jemicoms-projects.vercel.app/api/board?query=${query}`)
+    fetch(`https://next-08.vercel.app/api/board?query=${query}`)
         .then(res=>res.json())
         .then(res=>{
             console.log('res', res); 
