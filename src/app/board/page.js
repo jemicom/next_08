@@ -16,7 +16,7 @@ const Board = () => {
   const router = useRouter(); 
 
   useEffect(()=>{
-    fetch('https://next-08-lsmtn2f64-jemicoms-projects.vercel.app/api/board')
+    fetch('https://next-08-8maiduwyc-jemicoms-projects.vercel.app/api/board')
         .then(res=>res.json())
         .then(res=>{
             // console.log('res', res); 
@@ -40,9 +40,10 @@ const Board = () => {
     setSearchTerm(event.target.value);
     // router.push(`/board?query=${event.target.value}`);
   };
+
   useEffect(()=>{
      
-    fetch(`https://next-08-lsmtn2f64-jemicoms-projects.vercel.app/api/board?query=${query}`)
+    fetch(`https://next-08-8maiduwyc-jemicoms-projects.vercel.app/api/board?query=${query}`)
         .then(res=>res.json())
         .then(res=>{
             console.log('res', res); 
@@ -60,6 +61,7 @@ const Board = () => {
   
     <div>
         <a href="/board?query=css"> css </a>
+        <a href="/board?query=test"> test </a>
         <a href="/board?query=java"> java </a>
         <a href="/board"> reset </a>  
         {/* <p onClick={()=>handleClick('first')}>router push first</p>  
@@ -78,7 +80,14 @@ const Board = () => {
         <ul>
           {filteredPosts.map(item => (
             <li key={item.id}>
-              
+              <h2><a href={`/board/${item.id}`}> {item.title} </a></h2>
+              <p>{item.body}</p>
+            </li>
+          ))}
+        </ul>
+        <ul>
+          {board.map(item => (
+            <li key={item.id}>
               <h2><a href={`/board/${item.id}`}> {item.title} </a></h2>
               <p>{item.body}</p>
             </li>
