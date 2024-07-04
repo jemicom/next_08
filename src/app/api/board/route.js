@@ -88,10 +88,17 @@ export async function POST(request) {
     console.error("Error processing form data:", error);
 
     // 에러 응답 반환
-    return new Response(JSON.stringify({ success: false, error: error.message }), {
-      status: 500,
+    // return new Response(JSON.stringify({ success: false, error: error.message }), {
+    //   status: 500,
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
+    return new Response(null, {
+      status: 302,
       headers: {
-        "Content-Type": "application/json",
+        // Location: '/board',
+        Location: 'https://next-08.vercel.app/board/',
       },
     });
   }
