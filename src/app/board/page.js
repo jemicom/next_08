@@ -85,14 +85,14 @@ const Board = () => {
             </li>
           ))}
         </ul>
-        <ul>
+        {/* <ul>
           {board.map(item => (
             <li key={item.id}>
               <h2><a href={`/board/${item.id}`}> {item.title} </a></h2>
               <p>{item.body}</p>
             </li>
           ))}
-        </ul>
+        </ul> */}
          {/* {
             board.length && board.map(item=><div key={item.id} style={{color:"red"}}>
                      <a href={`/board/${item.id}`}>{item.title} </a>
