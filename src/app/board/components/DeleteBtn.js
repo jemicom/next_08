@@ -9,7 +9,7 @@ const DeleteBtn = ({ board  }) => {
         }).then(res=>res.json())
         .then(res=>{
             console.log('delete');
-            return router.push('/board')
+            return router.push('https://next-08.vercel.app/api/board')
         })
     };
   return (

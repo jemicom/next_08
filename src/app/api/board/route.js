@@ -80,7 +80,8 @@ export async function POST(request) {
     return new Response(null, {
       status: 302,
       headers: {
-        Location: '/board',
+        // Location: '/board',
+        Location: 'https://next-08.vercel.app/board/',
       },
     });
   } catch (error) {
