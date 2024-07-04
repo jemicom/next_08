@@ -1,0 +1,30 @@
+.pager {
+    display: flex;
+    list-style: none;
+}
+
+.pager li {
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin: 2px;
+    border: 1px solid black;
+}
+
+.pager a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.pagenation-box {
+    display: flex;
+    align-items: center;
+}
+
+.pagenation-box button {
+    background-color: white;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0 15px;
+}
