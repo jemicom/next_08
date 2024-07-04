@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { board } from './data'
+// import { board } from './data'
 // 새로운 board 를 읽어오지 않으므로 기존 데이터를 그대로 출력함 
 
 // let board = [];
@@ -23,6 +23,10 @@ export async function GET(request, { params } ) {
   // params를 사용할 수 없을 때 
   // params : undefind 
   // 라우트를 자동 인식하므로 파라미터도 자동 인식됨 
+  const filePath = path.join(process.cwd(), 'src/app/api/board', 'data.js');
+  // 파일에 쓰기
+  const board = fs.readFileSync( filePath , 'utf8');
+
   const searchParams = request.nextUrl.searchParams;
   //
   console.log( params,   searchParams )
