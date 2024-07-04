@@ -10,17 +10,21 @@ const links = [
     title: "Home",
     path: "/",
   },
+  // {
+  //   title: "Todos",
+  //   path: "/todos",
+  // },
+  // {
+  //   title: "About",
+  //   path: "/about",
+  // },
+  // {
+  //   title: "Contact",
+  //   path: "/contact",
+  // },
   {
-    title: "Todos",
-    path: "/todos",
-  },
-  {
-    title: "About",
-    path: "/about",
-  },
-  {
-    title: "Contact",
-    path: "/contact",
+    title: "Rwd Motion",
+    path: "/motion",
   },
   {
     title: "Board",
