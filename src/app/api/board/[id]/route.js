@@ -28,10 +28,12 @@ export async function GET( request , { params } ) {
   console.log( params ) 
 
   // 호출한 id가 전체 length 보다 크면  redirect
-  if (parseInt(params.id) > board.length) {
-    redirect("/api/board");
-    // 같은 backend로 route
-  }
+
+  // 리다렉트가 되는 것 같음
+  // if (parseInt(params.id) > board.length) {
+  //   redirect("/api/board");
+  //   // 같은 backend로 route
+  // }
   const findId = board.find(
     (item) => item.id ===  params.id 
   );
@@ -86,5 +88,12 @@ export async function DELETE( request, {params}) {
   fs.writeFileSync( filePath, `export const board = ${JSON.stringify(board, null, 3)}`, 'utf8');
   
 
-  return Response.json( deleted );
+  // return Response.json( deleted );
+  return new Response(null, {
+    status: 302,
+    headers: {
+      // Location: '/board',
+      Location: 'https://next-08.vercel.app/board/',
+    },
+  });
 }
