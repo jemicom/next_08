@@ -51,6 +51,7 @@ export async function GET() {
 // 그러나 get test하면 목록이 늘어나는 것을 확인할 수 있음 
  
 // pages/api/addPost.js
+let idNum = 30
 export async function POST(request) {
   try {
      const formData = await request.formData();
@@ -61,8 +62,8 @@ export async function POST(request) {
    
 
     const newPost = {
-      id : `${ board[board.length].id + 1}`, 
-      // id : "30", 
+      // id : `${ board[board.length].id + 1}`, 
+      id : ++idNum, 
       title : formData.get('title'),
       body : formData.get('body'),
     }
