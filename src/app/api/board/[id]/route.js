@@ -71,29 +71,40 @@ export async function PUT( request, {params}) {
 }
 
 export async function DELETE( request, {params}) {
-  const index = board.findIndex(
-    (item) => item.id ===  params.id 
-  );
-
-//   const deleted = board[index];
-//   지우데이터를 확인하기 위해 찾음 
-
-  const deleted = board.splice(index, 1);
-  //  splice는 지운것을 리턴하므로 굳이 찾을 필요 없음 
-  console.log( deleted )
-
-  // 파일에 쓰기
-  // process.cwd() 현재 경로
-  const filePath = path.join(process.cwd(), 'src/app/api/board', '/data.js');
-  fs.writeFileSync( filePath, `export const board = ${JSON.stringify(board, null, 3)}`, 'utf8');
+  try{
+    const index = board.findIndex(
+      (item) => item.id ===  params.id 
+    );
   
-
-  // return Response.json( deleted );
-  return new Response(null, {
-    status: 302,
-    headers: {
-      // Location: '/board',
-      Location: 'https://next-08.vercel.app/board/',
-    },
-  });
+  //   const deleted = board[index];
+  //   지우데이터를 확인하기 위해 찾음 
+  
+    const deleted = board.splice(index, 1);
+    //  splice는 지운것을 리턴하므로 굳이 찾을 필요 없음 
+    console.log( deleted )
+  
+    // 파일에 쓰기
+    // process.cwd() 현재 경로
+    const filePath = path.join(process.cwd(), 'src/app/api/board', '/data.js');
+    fs.writeFileSync( filePath, `export const board = ${JSON.stringify(board, null, 3)}`, 'utf8');
+    
+  
+    // return Response.json( deleted );/
+    return new Response(null, {
+      status: 302,
+      headers: {
+        // Location: '/board',
+        Location: 'https://next-08.vercel.app/board/',
+      },
+    });
+  }catch(err){
+    
+    return new Response(null, {
+      status: 302,
+      headers: {
+        // Location: '/board',
+        Location: 'https://next-08.vercel.app/board/',
+      },
+    });
+  }
 }
